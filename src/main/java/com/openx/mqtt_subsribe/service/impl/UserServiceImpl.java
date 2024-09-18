@@ -68,26 +68,26 @@ public class UserServiceImpl implements UserService {
         return userMapper.selectList(null);
     }
 
-    /**
-     * 开始扣费
-     * @param userID 用户ID
-     */
-    public void startCharging(String userID) {
-        User user = userMapper.selectById(userID);
-        if (user != null) {
-            // 创建一个定时任务，每秒钟执行一次
-            ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(() -> {
-                User updatedUser = userMapper.selectById(userID);
-                if (updatedUser != null && updatedUser.getTimestamp() != null) {
-                    reduceMoney(userID);
-                }
-            }, 0, 1, TimeUnit.SECONDS);
-            // 将定时任务存储到Map中
-            scheduledTasks.put(userID, scheduledFuture);
-        } else {
-            throw new RuntimeException("User not found");
-        }
-    }
+//    /**
+//     * 开始扣费
+//     * @param userID 用户ID
+//     */
+//    public void startCharging(String userID) {
+//        User user = userMapper.selectById(userID);
+//        if (user != null) {
+//            // 创建一个定时任务，每秒钟执行一次
+//            ScheduledFuture<?> scheduledFuture = scheduler.scheduleAtFixedRate(() -> {
+//                User updatedUser = userMapper.selectById(userID);
+//                if (updatedUser != null && updatedUser.getTimestamp() != null) {
+//                    reduceC(userID);
+//                }
+//            }, 0, 1, TimeUnit.SECONDS);
+//            // 将定时任务存储到Map中
+//            scheduledTasks.put(userID, scheduledFuture);
+//        } else {
+//            throw new RuntimeException("User not found");
+//        }
+//    }
 
     /**
      * 停止扣费
@@ -120,23 +120,23 @@ public class UserServiceImpl implements UserService {
      * 扣款逻辑
      * @param userID 用户ID
      */
-    private void reduceMoney(String userID) {
-        User user = userMapper.selectById(userID);
-        if (user != null) {
-            double deductionAmount = 0.1; // 假设每次扣1单位的金额
-            if (user.getMoney() >= deductionAmount) {
-                user.setMoney(user.getMoney() - deductionAmount);
-                userMapper.updateById(user);
-                recordCharge(userID, deductionAmount);
-                System.out.println("User " + userID + " has been charged. New balance: " + user.getMoney());
-            } else {
-                System.out.println("User " + userID + " has insufficient balance.");
-                stopCharging(userID);
-            }
-        } else {
-            throw new RuntimeException("User not found");
-        }
-    }
+//    private void reduceC(String userID) {
+//        User user = userMapper.selectById(userID);
+//        if (user != null) {
+//            double deductionAmount = 0.1; // 假设每次扣1单位的金额
+//            if (user.getC() >= deductionAmount) {
+//                user.setC(user.getC() - deductionAmount);
+//                userMapper.updateById(user);
+//                recordCharge(userID, -deductionAmount);// 记录每次扣费
+//                System.out.println("User " + userID + " has been charged. New balance: " + user.getC());
+//            } else {
+//                System.out.println("User " + userID + " has insufficient balance.");
+//                stopCharging(userID);
+//            }
+//        } else {
+//            throw new RuntimeException("User not found");
+//        }
+//    }
     /**
      * 记录每次扣费
      * @param userID 用户ID

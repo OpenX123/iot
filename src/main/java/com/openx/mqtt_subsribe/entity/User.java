@@ -12,6 +12,8 @@ public class User {
     private String userId;
     private String userName;
     private String password;
-    private Double money;
+    private String cId;
+    private Integer tempWaring;
+    private Integer CWaring;
     private Timestamp timestamp;//时间戳
 }

@@ -38,6 +38,10 @@ public class MQTTSubsribe {
         LOGGER.info("8088上线了");
     }
 
+    /**
+     * 发布者客户端和服务端建立连接
+     * @return
+     */
     public MqttClient publishConnect() {
         try {
             if (publishClient == null) {
@@ -57,6 +61,9 @@ public class MQTTSubsribe {
         return publishClient;
     }
 
+    /**
+     * 订阅者客户端和服务端建立连接
+     */
     public void subsribeConnect() {
         try {
             if (subsribeClient == null) {
@@ -105,6 +112,12 @@ public class MQTTSubsribe {
         }
     }
 
+    /**
+     * 向特定主题发布消息
+     * @param topic
+     * @param message
+     * @return
+     */
     public boolean publish(MqttTopic topic, MqttMessage message) {
         MqttDeliveryToken token = null;
         try {
@@ -123,9 +136,18 @@ public class MQTTSubsribe {
         } catch (MqttException e) {
             LOGGER.info(e.toString());
         }
-        return token.isComplete();
+        if (token != null) {
+            return token.isComplete();
+        }
+        return false;
     }
 
+    /**
+     * 发送消息
+     * @param topic
+     * @param data
+     * @param qos
+     */
     public void sendMQTTMessage(String topic, String data, int qos) {
         try {
             this.publishClient = this.publishConnect();

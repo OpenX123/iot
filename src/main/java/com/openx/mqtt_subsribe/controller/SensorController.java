@@ -12,9 +12,11 @@ import io.swagger.annotations.Api;
 import io.swagger.annotations.ApiOperation;
 import org.springframework.beans.BeanUtils;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.web.bind.annotation.*;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 
 @RestController
@@ -25,9 +27,14 @@ public class SensorController {
     private SensorService sensorService;
 
     @GetMapping("/getAll")
-    @ApiOperation("获取所有传感器数据")
-    public Result< List<Sensor>> getAll() {
-        List<Sensor> sensorData = sensorService.getAll();
+    @ApiOperation("获取传感器数据")
+    public Result< List<Sensor>> getAll( @RequestParam(value = "date", required = false) @DateTimeFormat(pattern = "yyyy-MM-dd") LocalDate date) {
+        List<Sensor> sensorData;
+        if (date != null) {
+            sensorData = sensorService.getDataByDate(date);
+        } else {
+            sensorData = sensorService.getAll();
+        }
         if (sensorData != null) {
             return Result.success(sensorData);
         } else {

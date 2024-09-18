@@ -4,6 +4,7 @@ import com.openx.mqtt_subsribe.entity.ChargeRecord;
 import com.openx.mqtt_subsribe.entity.User;
 import com.openx.mqtt_subsribe.entity.dto.LoginRequest;
 import com.openx.mqtt_subsribe.entity.dto.RegisterRequest;
+import com.openx.mqtt_subsribe.mapper.UserMapper;
 import com.openx.mqtt_subsribe.model.Result;
 import com.openx.mqtt_subsribe.service.MessageService;
 import com.openx.mqtt_subsribe.service.UserService;
@@ -29,6 +30,8 @@ public class UserController {
     private UserService userService;
     @Autowired
     private MessageService messageService;
+    @Autowired
+    private UserMapper userMapper;
 
     @PostMapping("/login")
     public Result<User> login(@RequestBody LoginRequest loginRequest, HttpServletResponse response, HttpServletRequest request) {
@@ -52,17 +55,17 @@ public class UserController {
             return Result.error("Registration failed");
         }
     }
-    @PostMapping("/add/{money}")
-    public Result<String> addMoney(@PathVariable Double money) {
+    @PostMapping("/add/{C}")
+    public Result<String> addC(@PathVariable Double C) {
         Map<String, Object> payload = new HashMap<>();
         payload.put("topic", "/post");
-        payload.put("msg", "{\"Money_add\":}"+money.intValue());
+        payload.put("msg", "{\"C\":}"+C.intValue());
         payload.put("qos", 2);
         String s = messageService.publishMessage(payload);
         if(!s.equals("主题不存在"))
-            return Result.success("Add money :"+money);
+            return Result.success("Add C :"+C);
         else
-            return Result.error("Add money failed");
+            return Result.error("Add C failed");
     }
     @GetMapping("/find/{userId}")
     public Result<User> findByUserId(@PathVariable String userId) {
@@ -94,6 +97,15 @@ public class UserController {
         List<ChargeRecord> chargeRecords = userService.getAllRecord();
         if (chargeRecords != null) {
             return Result.success(chargeRecords);
+        } else {
+            return Result.error("User not found");
+        }
+    }
+    @GetMapping("/getRecordByUserId/{userId}")
+    public Result<List<ChargeRecord>> getRecordByUserId(@PathVariable String userId) {
+        List<ChargeRecord> records = userMapper.getRecordByUserId(userId);
+        if (records != null) {
+            return Result.success(records);
         } else {
             return Result.error("User not found");
         }

@@ -1,6 +1,12 @@
 server:
   port: 8088
 spring:
+  servlet:
+    multipart:
+      enabled: true # 启用http上传
+      max-file-size: 10MB # 设置支持的单个上传文件的大小限制
+      max-request-size: 10MB # 设置最大的请求的文件大小，设置总体大小请求
+      file-size-threshold: 512KB # 当上传文件达到指定配置量的时候会将文件内容写入磁盘
   datasource:
     url: jdbc:mysql://localhost:3306/iot?useSSL=false&serverTimezone=Asia/Shanghai
     username: root
@@ -13,12 +19,12 @@ mybatis-plus:
 
 publish:
   mqtt:
-#    host: tcp://localhost:1883
-    host: tcp://192.168.31.242:1883
-#    username: admin
-    username: lzl
-#    password: public
-    password: lzl123456
+    host: tcp://localhost:1883
+#    host: tcp://192.168.31.242:1883
+    username: admin
+#    username: lzl
+    password: public
+#    password: lzl123456
     cleansession: false
     clientid: mqtt_subsribe
     default_topic: ??

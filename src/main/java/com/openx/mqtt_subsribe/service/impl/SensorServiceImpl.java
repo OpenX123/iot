@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.sql.Timestamp;
+import java.time.LocalDate;
 import java.util.List;
 import java.util.TimeZone;
 
@@ -25,5 +26,10 @@ public class SensorServiceImpl implements SensorService {
     public void save(Sensor sensor) {
         sensor.setTimestamp(new Timestamp(System.currentTimeMillis()));
         sensorMapper.insert(sensor);
+    }
+
+    @Override
+    public List<Sensor> getDataByDate(LocalDate date) {
+        return sensorMapper.findByDate(date);
     }
 }

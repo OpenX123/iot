@@ -15,9 +15,9 @@ public interface UserService {
 
     List<User> getAll();
 
-    void startCharging(String userID);
+//    void startCharging(String userID);
 
-    void stopCharging(String userID);
+//    void stopCharging(String userID);
 
     List<ChargeRecord> getAllRecord();
 }
