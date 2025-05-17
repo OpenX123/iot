@@ -1,0 +1,118 @@
+{
+  "pages": [
+	  {
+	    "path": "pages/login/login",
+	    "style": {
+	      "navigationBarTitleText": "登录"
+	    }
+	  },
+	{
+	  "path": "pages/index/index",
+	  "style": {
+	    "navigationBarTitleText": "首页"
+	  }
+	},
+	{
+	    "path": "pages/register/register",
+	    "style": {
+	      "navigationBarTitleText": "注册"
+	    }
+	},
+	{
+	  "path": "pages/list/list",
+	  "style": {
+	  	"navigationBarTitleText": "功能"
+	  	// "navigationBarBackgroundColor": "#404453",
+	  	// "navigationBarTextStyle": "white"
+		}
+	},
+	{
+		"path": "pages/my/my",
+		"style": {
+			"navigationBarTitleText": "我的"
+			// "enablePullDownRefresh": false
+		}
+	},
+	{
+		"path" : "pages/users/users",
+		"style" : 
+		{
+			"navigationBarTitleText" : "用户信息"
+		}
+	},
+	{
+		"path" : "pages/moneyRecord/moneyRecord",
+		"style" : 
+		{
+			"navigationBarTitleText" : "用户消费记录"
+		}
+	},
+	{
+		"path" : "pages/uploadFile/uploadFile",
+		"style" : 
+		{
+			"navigationBarTitleText" : "上传文件"
+		}
+	},
+	{
+		"path" : "pages/map/map",
+		"style" : 
+		{
+			"navigationBarTitleText" : ""
+		}
+	},
+	{
+		"path" : "pages/camera/camera",
+		"style" : 
+		{
+			"navigationBarTitleText" : ""
+		}
+	},
+	{
+		"path" : "pages/camera1/camera1",
+		"style" : 
+		{
+			"navigationBarTitleText" : ""
+		}
+	}
+],
+  "globalStyle": {
+    "navigationBarTextStyle": "black",
+    "navigationBarTitleText": "简洁又美观的登录页面",
+    "navigationBarBackgroundColor": "#F8F8F8",
+    "backgroundColor": "#F8F8F8"
+  },
+  "globalStyle": {
+  		"navigationBarTextStyle": "black",
+  		"navigationBarTitleText": "uni系列课程",
+  		"navigationBarBackgroundColor": "#F7F7F7",
+  		"backgroundColor": "#F8F8F8"
+  	},
+  	"uniIdRouter": {},
+  	"tabBar": {
+  		"color": "#cdcdcd",
+  		"selectedColor": "#2c2c2c",
+  		"borderStyle": "black",
+  		"backgroundColor": "#fff",
+  		"list": [
+  			{
+  				"text": "首页",
+  				"pagePath": "pages/index/index",
+  				"iconPath": "static/bottomBar/首页1.png",
+  				"selectedIconPath": "static/bottomBar/首页.png"
+  			},
+  			{
+  				"text": "功能",
+  				"pagePath": "pages/list/list",
+  				"iconPath": "static/bottomBar/功能1.png",
+  				"selectedIconPath": "static/bottomBar/功能.png"
+  			},
+			{
+				"text": "我的",
+				"pagePath": "pages/my/my",
+				"iconPath": "static/bottomBar/我的1.png",
+				"selectedIconPath": "static/bottomBar/我的.png"
+			}
+  		]
+  	}
+}
