@@ -136,4 +136,14 @@ http://your-server-ip:8080/swagger-ui/index.html
 - 连接MQTT broker失败：检查broker地址、端口和认证信息
 - 数据库连接异常：检查数据库配置和网络连通性
 - 前端应用无法连接后端：检查API地址配置和跨域设置
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182121563.png)
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182124502.png)
+
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182127606.png)
+
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182126995.png)
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182128811.png)
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182128947.png)
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182128917.png)
+![image.png](https://obsidian-oss-openx.oss-cn-guangzhou.aliyuncs.com/img/202409182129604.png)
 
